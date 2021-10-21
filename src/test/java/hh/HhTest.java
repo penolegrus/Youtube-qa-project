@@ -15,15 +15,6 @@ public class HhTest extends BaseTest {
     private final static String URL = "https://hh.ru/applicant/resumes/view?resume=1edf0c93ff095811d20039ed1f6a3638497073";
 
     /**
-     * Константы для обозначения ключей для хэш карты
-     */
-    public static String GENDER;
-    public static String CITY;
-    public static String AGE;
-    public static String RELOCATE;
-    public static String CONFIRMED_PHONE;
-
-    /**
      * Получает атрибуты кандидата через HashMap, сравнивает актуальный и ожидаемый результат
      */
     @Test
@@ -31,11 +22,11 @@ public class HhTest extends BaseTest {
         HhResumePage hhResumePage = new HhResumePage(URL);
         //создаем карту ключ-значение с ожидаемыми данными
         Map<String,Object> expectedAttributes = new HashMap<>();
-        expectedAttributes.put(GENDER,"М");
-        expectedAttributes.put(AGE, 25);
-        expectedAttributes.put(CITY, "Санкт-Петербург");
-        expectedAttributes.put(RELOCATE, false);
-        expectedAttributes.put(CONFIRMED_PHONE, true);
+        expectedAttributes.put(HhResumePage.GENDER,"М");
+        expectedAttributes.put(HhResumePage.AGE, 25);
+        expectedAttributes.put(HhResumePage.CITY, "Санкт-Петербург");
+        expectedAttributes.put(HhResumePage.RELOCATE, false);
+        expectedAttributes.put(HhResumePage.CONFIRMED_PHONE, true);
 
         //получаем карту ключ-значение с актуальными данными
         Map<String,Object> actualAttributes = hhResumePage.getAttributes();

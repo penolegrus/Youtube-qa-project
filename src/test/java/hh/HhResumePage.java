@@ -18,6 +18,15 @@ public class HhResumePage {
     private final SelenideElement confirmedNumber = $x("//div[@data-qa='resume-contacts-phone']//span[1]");
     private final SelenideElement city = $x("//span[@data-qa='resume-personal-address']");
 
+    /**
+     * Константы для обозначения ключей для хэш карты
+     */
+    public static String GENDER;
+    public static String CITY;
+    public static String AGE;
+    public static String RELOCATE;
+    public static String CONFIRMED_PHONE;
+
     public HhResumePage(String url) {
         Selenide.open(url);
     }
@@ -25,16 +34,18 @@ public class HhResumePage {
     /**
      * Возвращает карту (пары ключ-значение) с актуальными данными о резюме
      * Ключ карты является атрибут с типом String, значением карты является атрибут с типом Object (любым типом)
+     *
+     * Заинлайненный вариант получения хэш карты с значениями. Упрощенный вариант, можно увидеть в тестовом классе
      * @return заполненная карта с резюме
      */
     public Map<String,Object> getAttributes(){
-        Map<String, Object> attributes = new HashMap<>();
-        attributes.put(HhTest.GENDER, getGenderHard());
-        attributes.put(HhTest.CITY, getCityHard());
-        attributes.put(HhTest.AGE, getAge());
-        attributes.put(HhTest.RELOCATE, isReadyToRelocate());
-        attributes.put(HhTest.CONFIRMED_PHONE, isPhoneConfirmed());
-        return attributes;
+        return new HashMap<>(){{
+            put(GENDER, getGenderHard());
+            put(CITY, getCityHard());
+            put(AGE, getAge());
+            put(RELOCATE, isReadyToRelocate());
+            put(CONFIRMED_PHONE, isPhoneConfirmed());
+        }};
     }
 
     /**
