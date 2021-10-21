@@ -10,7 +10,7 @@ public class SearchPage {
     /**
      * Возвращает href из первой статьи
      */
-    public String getHrefFromFirstArticle(){
+    protected String getHrefFromFirstArticle(){
         return articleTitles.first().getAttribute("href");
     }
 

@@ -20,7 +20,7 @@ public class MainPage {
      * Выполняется поиск на сайте среди статей и нажимается кнопка Enter
      * @param searchString поисковая строка
      */
-    public SearchPage search(String searchString){
+    protected SearchPage search(String searchString){
        textBoxInput.setValue(searchString);
        textBoxInput.sendKeys(Keys.ENTER);
        return new SearchPage();

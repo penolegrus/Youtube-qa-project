@@ -8,6 +8,9 @@ import org.junit.Before;
 
 abstract public class BaseTest {
 
+    /**
+     * Инициализация selenide с настройками
+     */
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         Configuration.browser = "chrome";
@@ -16,11 +19,17 @@ abstract public class BaseTest {
         Configuration.headless = false;
     }
 
+    /**
+     * Выполнение метода перед каждым запуском тестов
+     */
     @Before
     public void init(){
         setUp();
     }
 
+    /**
+     * Выполнение метода после каждого закрытия тестов
+     */
     @After
     public void tearDown(){
         Selenide.closeWebDriver();

@@ -4,6 +4,7 @@ import core.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 public class AppleTest extends BaseTest {
 
     private final static String BASE_URL = "https://appleinsider.ru/";
