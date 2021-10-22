@@ -21,11 +21,11 @@ public class HhResumePage {
     /**
      * Константы для обозначения ключей для хэш карты
      */
-    public static String GENDER;
-    public static String CITY;
-    public static String AGE;
-    public static String RELOCATE;
-    public static String CONFIRMED_PHONE;
+    public static String GENDER = "Пол";
+    public static String CITY = "Город";
+    public static String AGE = "Возраст";
+    public static String RELOCATE = "Готовность к переезду";
+    public static String CONFIRMED_PHONE = "Подтрвежденный номер телефона";
 
     public HhResumePage(String url) {
         Selenide.open(url);
