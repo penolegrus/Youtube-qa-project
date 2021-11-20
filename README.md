@@ -1,7 +1,8 @@
 # Youtube-qa-project
-Проект по автотестам для моего ютуб канала UI Selenide + API Rest Assured автотесты
+Проект по автотестам для моего ютуб канала.
+В этом репозитаории содержатся UI Selenide + API Rest Assured автотесты
 
-# Тест кейс от подписчика №1, пакет appleInsider
+# UI тесты. Пакет appleInsider. Тест кейс от подписчика №1
 
 1. Открыть сайт appleinsider.ru
 2. Нажать на кнопку поиска сверху справа
@@ -9,7 +10,7 @@
 4. В найденных статьях получить href атрибут первой найденной статьи
 5. Убедиться, что href ссылка содержит слово Iphone 13 (обрати внимание как это слово выглядит в href ссылке)
 
-# Тест кейс от подписчика №2, пакет hh
+# UI тесты. Пакет hh. Тест кейс от подписчика №2 
 1) Открыть резюме, которое доступно только по ссылке: https://hh.ru/applicant/resumes/view?resume=1edf0c93ff095811d20039ed1f6a3638497073
 2) Получить информацию о профиле, используя HashMap или Class, в которой должны быть следующие атрибуты:
 String sex, int age, String city, boolean confirmedPhoneNumber, boolean readyToRelocate;
@@ -17,7 +18,7 @@ String sex, int age, String city, boolean confirmedPhoneNumber, boolean readyToR
 
 Ожидаемый результат sex = "М", age = 25, city = "Санкт-Петербург", confirmedPhoneNubmer = true, readyToRelocate = false; 
 
-# Api тест кейсы, пакет api
+# API тесты. Пакет api. Тесты для методов GET/POST/DELETE/PUT для Rest Assured с использованием Specifications
 
 Тест 1
 
