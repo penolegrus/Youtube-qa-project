@@ -7,7 +7,6 @@ import api.reqres.registration.UnsuccessUserReg;
 import api.reqres.users.UserData;
 import api.reqres.users.UserTime;
 import api.reqres.users.UserTimeResponse;
-import api.spec.RequestSpecifications;
 import api.spec.Specifications;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 public class ReqresPojoTest {
-    private final static String URL = "https://reqres.in";
+    private final static String URL = "https://reqres.in/";
 
     /**
      * 1. Получить список пользователей со второй страница на сайте https://reqres.in/
@@ -30,7 +29,13 @@ public class ReqresPojoTest {
     public void checkAvatarContainsIdTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         //1 способ сравнивать значения напрямую из экземпляров класса
-        List<UserData> users = RequestSpecifications.getRequestList("/api/users?page=2","data", UserData.class);
+        List<UserData> users = given()
+                .when()
+                .get("api/users?page=2")
+                .then()
+                .log().all()
+                .extract().body().jsonPath().getList("data", UserData.class);
+
         //проверка аватар содержит айди
         users.forEach(x->Assert.assertTrue(x.getAvatar().contains(x.getId().toString())));
         //проверка почты оканчиваются на reqres.in
@@ -61,7 +66,13 @@ public class ReqresPojoTest {
         String UserPassword = "QpwL5tke4Pnpja7X4";
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Register user = new Register("eve.holt@reqres.in","pistol");
-        SuccessUserReg successUserReg = RequestSpecifications.postRequest(user, "/api/register", SuccessUserReg.class);
+        SuccessUserReg successUserReg = given()
+                .body(user)
+                .when()
+                .post("api/register")
+                .then()
+                .log().all()
+                .extract().as(SuccessUserReg.class);
         Assert.assertNotNull(successUserReg.getId());
         Assert.assertNotNull(successUserReg.getToken());
         Assert.assertEquals(UserId, successUserReg.getId());
@@ -79,7 +90,7 @@ public class ReqresPojoTest {
         UnsuccessUserReg unSuccessUserReg = given()
                 .body(peopleSecond)
                 .when()
-                .post("/api/register")
+                .post("api/register")
                 .then()  //.assertThat().statusCode(400) проверить статус ошибки, если не указана спецификация
                 .log().body()
                 .extract().as(UnsuccessUserReg.class);
@@ -96,7 +107,7 @@ public class ReqresPojoTest {
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         List<Data> data = given()
                 .when()
-                .get("/api/unknown")
+                .get("api/unknown")
                 .then()
                 .log().all()
                 .extract().body().jsonPath().getList("data", Data.class);
@@ -115,7 +126,7 @@ public class ReqresPojoTest {
     @Test
     public void deleteUserTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpec(204));
-        given().when().delete("/api/users/2")
+        given().when().delete("api/users/2")
                 .then()
                 .log().all();
     }
@@ -130,7 +141,7 @@ public class ReqresPojoTest {
         UserTimeResponse response = given()
                 .body(user)
                 .when()
-                .put("/api/users/2")
+                .put("api/users/2")
                 .then().log().all()
                 .extract().as(UserTimeResponse.class);
 
