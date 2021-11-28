@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 public class ReqresNoPojoTest {
-    private final static String URL = "https://reqres.in/";
+    private final static String URL = "https://reqres.in";
 
     /**
      * 1. Получить список пользователей со второй страница на сайте https://reqres.in/
