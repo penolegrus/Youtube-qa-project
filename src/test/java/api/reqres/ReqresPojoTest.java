@@ -4,10 +4,11 @@ import api.reqres.colors.Data;
 import api.reqres.registration.Register;
 import api.reqres.registration.SuccessUserReg;
 import api.reqres.registration.UnsuccessUserReg;
-import api.reqres.spec.Specifications;
 import api.reqres.users.UserData;
 import api.reqres.users.UserTime;
 import api.reqres.users.UserTimeResponse;
+import api.spec.RequestSpecifications;
+import api.spec.Specifications;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,7 +22,7 @@ public class ReqresPojoTest {
     private final static String URL = "https://reqres.in";
 
     /**
-     * 1. Получить список пользователей со второй страница на сайте https://reqres.in
+     * 1. Получить список пользователей со второй страница на сайте https://reqres.in/
      * 2. Убедиться что id пользователей содержаться в их avatar;
      * 3. Убедиться, что email пользователей имеет окончание reqres.in;
      */
@@ -29,11 +30,7 @@ public class ReqresPojoTest {
     public void checkAvatarContainsIdTest(){
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         //1 способ сравнивать значения напрямую из экземпляров класса
-        List<UserData> users = given()
-                .when()
-                .get("/api/users?page=2")
-                .then().log().body()
-                .extract().body().jsonPath().getList("data",UserData.class);
+        List<UserData> users = RequestSpecifications.getRequestList("/api/users?page=2","data", UserData.class);
         //проверка аватар содержит айди
         users.forEach(x->Assert.assertTrue(x.getAvatar().contains(x.getId().toString())));
         //проверка почты оканчиваются на reqres.in
@@ -64,13 +61,7 @@ public class ReqresPojoTest {
         String UserPassword = "QpwL5tke4Pnpja7X4";
         Specifications.installSpecification(Specifications.requestSpec(URL), Specifications.responseSpecOK200());
         Register user = new Register("eve.holt@reqres.in","pistol");
-        SuccessUserReg successUserReg = given()
-                .body(user)
-                .when()
-                .post("/api/register")
-                .then()
-                .log().all()
-                .extract().as(SuccessUserReg.class);
+        SuccessUserReg successUserReg = RequestSpecifications.postRequest(user, "/api/register", SuccessUserReg.class);
         Assert.assertNotNull(successUserReg.getId());
         Assert.assertNotNull(successUserReg.getToken());
         Assert.assertEquals(UserId, successUserReg.getId());
