@@ -18,10 +18,10 @@ import java.util.stream.Collectors;
 import static io.restassured.RestAssured.given;
 
 public class ReqresPojoTest {
-    private final static String URL = "https://reqres.in/";
+    private final static String URL = "https://reqres.in";
 
     /**
-     * 1. Получить список пользователей со второй страница на сайте https://reqres.in/
+     * 1. Получить список пользователей со второй страница на сайте https://reqres.in
      * 2. Убедиться что id пользователей содержаться в их avatar;
      * 3. Убедиться, что email пользователей имеет окончание reqres.in;
      */
@@ -31,7 +31,7 @@ public class ReqresPojoTest {
         //1 способ сравнивать значения напрямую из экземпляров класса
         List<UserData> users = given()
                 .when()
-                .get("api/users?page=2")
+                .get("/api/users?page=2")
                 .then().log().body()
                 .extract().body().jsonPath().getList("data",UserData.class);
         //проверка аватар содержит айди
