@@ -8,20 +8,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseSeleniumTest {
+abstract public class BaseSeleniumTest {
     protected WebDriver driver;
 
     @Before
-    public void setup() {
+    public void setUp(){
         WebDriverManager.chromedriver().setup();
-        // Создание экземпляра драйвера
         driver = new ChromeDriver();
-        // Устанавливаем размер окна браузера, как максимально возможный
         driver.manage().window().maximize();
-        // Установим время ожидания для поиска элементов
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        // Установить созданный драйвер для поиска в веб-страницах
         BaseSeleniumPage.setDriver(driver);
     }
 

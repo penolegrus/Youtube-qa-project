@@ -1,12 +1,15 @@
 package readProperties;
 
-import core.BaseTest;
+import core.BaseSelenideTest;
 import org.junit.Test;
 
 import java.io.IOException;
 
 
-public class PropertiesTest extends BaseTest {
+public class PropertiesTest extends BaseSelenideTest {
+    /**
+     * Чтение пропертей из файла
+     */
     @Test
     public void readProperties() throws IOException {
         System.getProperties().load(ClassLoader.getSystemResourceAsStream("application.properties"));
@@ -14,6 +17,9 @@ public class PropertiesTest extends BaseTest {
         System.out.println(urlFromProperty);
     }
 
+    /**
+     * Чтение conf файла
+     */
     @Test
     public void readFromConf(){
         String urlFromConf = ConfigProvider.URL;

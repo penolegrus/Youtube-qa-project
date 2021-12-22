@@ -1,14 +1,13 @@
 package hh;
 
-import core.BaseTest;
+import core.BaseSelenideTest;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-public class HhTest extends BaseTest {
+public class HhTest extends BaseSelenideTest {
     /**
      * Ссылка на резюме для получения данных
      */
@@ -58,4 +57,5 @@ public class HhTest extends BaseTest {
         Assert.assertEquals(expectedResume.isNumberConfirmed(), actualResume.isNumberConfirmed());
         Assert.assertEquals(expectedResume.isReadyToRelocate(), actualResume.isReadyToRelocate());
     }
+
 }

@@ -4,20 +4,18 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
-import core.BaseTest;
-import org.junit.Assert;
+import core.BaseSelenideTest;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$$x;
 
 
-public class WikiTest extends BaseTest {
+public class WikiTest extends BaseSelenideTest {
     private final static String URL = "https://ru.wikipedia.org/wiki/Java";
 
     @Test
@@ -70,6 +68,7 @@ public class WikiTest extends BaseTest {
             links.remove(WebDriverRunner.getWebDriver().getCurrentUrl());
         }
 
+        //пример работы стримапи
         List<Integer> hrefSizeEach = hrefs.stream().map(x->x.getAttribute("href").length()).collect(Collectors.toList());
     }
 }

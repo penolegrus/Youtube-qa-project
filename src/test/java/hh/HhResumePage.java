@@ -39,7 +39,7 @@ public class HhResumePage {
      * @return заполненная карта с резюме
      */
     public Map<String,Object> getAttributes(){
-        return new HashMap<>(){{
+        return new HashMap<String ,Object>(){{
             put(GENDER, getGenderHard());
             put(CITY, getCityHard());
             put(AGE, getAge());
