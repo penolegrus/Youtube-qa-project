@@ -7,8 +7,8 @@ public class TicketResponsePojo {
     private String due_date;
     private String assigned_to;
     private String title;
-    private Date created;
-    private Date modified;
+    private String created;
+    private String modified;
     private String submitter_email;
     private int status;
     private boolean on_hold;
@@ -21,7 +21,7 @@ public class TicketResponsePojo {
     private int kbitem;
     private int merged_to;
 
-    public TicketResponsePojo(int id, String due_date, String assigned_to, String title, Date created, Date modified, String submitter_email, int status, boolean on_hold, String description, String resolution, int priority, Date last_escalation, String secret_key, int queue, int kbitem, int merged_to) {
+    public TicketResponsePojo(int id, String due_date, String assigned_to, String title, String created, String modified, String submitter_email, int status, boolean on_hold, String description, String resolution, int priority, Date last_escalation, String secret_key, int queue, int kbitem, int merged_to) {
         this.id = id;
         this.due_date = due_date;
         this.assigned_to = assigned_to;
@@ -57,11 +57,11 @@ public class TicketResponsePojo {
         return title;
     }
 
-    public Date getCreated() {
+    public String getCreated() {
         return created;
     }
 
-    public Date getModified() {
+    public String getModified() {
         return modified;
     }
 
