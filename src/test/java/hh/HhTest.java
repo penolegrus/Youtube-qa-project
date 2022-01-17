@@ -1,11 +1,18 @@
 package hh;
 
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import core.BaseSelenideTest;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
+
+import static com.codeborne.selenide.Selenide.$$x;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class HhTest extends BaseSelenideTest {
     /**
@@ -31,7 +38,7 @@ public class HhTest extends BaseSelenideTest {
         Map<String,Object> actualAttributes = hhResumePage.getAttributes();
 
         //сравниваем ожидаемый и актуальный результат
-        Assert.assertEquals(expectedAttributes,actualAttributes);
+        Assertions.assertEquals(expectedAttributes,actualAttributes);
     }
 
     /**
@@ -48,14 +55,21 @@ public class HhTest extends BaseSelenideTest {
                 hhResumePage.isPhoneConfirmed(),hhResumePage.isReadyToRelocate());
 
         //1 способ сравнивнения классов
-        Assert.assertTrue(EqualsBuilder.reflectionEquals(expectedResume,actualResume));
+        Assertions.assertTrue(EqualsBuilder.reflectionEquals(expectedResume,actualResume));
 
         //2 способ сравнения отдельных переменных в классе
-        Assert.assertEquals(expectedResume.getGender(), actualResume.getGender());
-        Assert.assertEquals(expectedResume.getCity(), actualResume.getCity());
-        Assert.assertEquals(expectedResume.getAge(), actualResume.getAge());
-        Assert.assertEquals(expectedResume.isNumberConfirmed(), actualResume.isNumberConfirmed());
-        Assert.assertEquals(expectedResume.isReadyToRelocate(), actualResume.isReadyToRelocate());
+        Assertions.assertEquals(expectedResume.getGender(), actualResume.getGender());
+        Assertions.assertEquals(expectedResume.getCity(), actualResume.getCity());
+        Assertions.assertEquals(expectedResume.getAge(), actualResume.getAge());
+        Assertions.assertEquals(expectedResume.isNumberConfirmed(), actualResume.isNumberConfirmed());
+        Assertions.assertEquals(expectedResume.isReadyToRelocate(), actualResume.isReadyToRelocate());
     }
+
+
+    
+
+
+
+
 
 }

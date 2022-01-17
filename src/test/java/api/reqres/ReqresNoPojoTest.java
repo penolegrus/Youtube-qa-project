@@ -3,8 +3,8 @@ package api.reqres;
 import api.spec.Specifications;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,10 +37,10 @@ public class ReqresNoPojoTest {
         List<String> avatars = jsonPath.get("data.avatar");
 
         for(int i = 0; i<avatars.size(); i++){
-            Assert.assertTrue(avatars.get(i).contains(ids.get(i).toString()));
+            Assertions.assertTrue(avatars.get(i).contains(ids.get(i).toString()));
         }
 
-        Assert.assertTrue(emails.stream().allMatch(x->x.endsWith("@reqres.in")));
+        Assertions.assertTrue(emails.stream().allMatch(x->x.endsWith("@reqres.in")));
 
     }
 
@@ -59,8 +59,8 @@ public class ReqresNoPojoTest {
         JsonPath jsonPath = response.jsonPath();
         int id = jsonPath.get("id");
         String token = jsonPath.get("token");
-        Assert.assertEquals(4,id);
-        Assert.assertEquals("QpwL5tke4Pnpja7X4", token);
+        Assertions.assertEquals(4,id);
+        Assertions.assertEquals("QpwL5tke4Pnpja7X4", token);
     }
 
     @Test
@@ -76,6 +76,6 @@ public class ReqresNoPojoTest {
                 .extract().response();
         JsonPath jsonPath = response.jsonPath();
         String error = jsonPath.get("error");
-        Assert.assertEquals("Missing password", error);
+        Assertions.assertEquals("Missing password", error);
     }
 }

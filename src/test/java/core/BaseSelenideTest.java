@@ -3,8 +3,8 @@ package core;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  * Базовый класс для инициализации селенида
@@ -25,7 +25,7 @@ abstract public class BaseSelenideTest {
     /**
      * Выполнение метода перед каждым запуском тестов
      */
-    @Before
+    @BeforeEach
     public void init(){
         setUp();
     }
@@ -33,7 +33,7 @@ abstract public class BaseSelenideTest {
     /**
      * Выполнение метода после каждого закрытия тестов
      */
-    @After
+    @AfterEach
     public void tearDown(){
         Selenide.closeWebDriver();
     }

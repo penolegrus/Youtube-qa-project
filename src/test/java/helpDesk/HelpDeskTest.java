@@ -2,8 +2,8 @@ package helpDesk;
 
 import core.BaseSeleniumTest;
 import helpers.TestValues;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import readProperties.ConfigProvider;
 
 
@@ -18,8 +18,8 @@ public class HelpDeskTest extends BaseSeleniumTest {
                 .openLoginPage()
                 .auth(ConfigProvider.DEMO_LOGIN, ConfigProvider.DEMO_PASSWORD)
                 .findTicket(title);
-        Assert.assertTrue(ticketPage.getTitle().contains(title));
-        Assert.assertEquals(ticketPage.getBody(), TestValues.TEST_BODY);
-        Assert.assertEquals(ticketPage.getEmail(), TestValues.TEST_EMAIL);
+        Assertions.assertTrue(ticketPage.getTitle().contains(title));
+        Assertions.assertEquals(ticketPage.getBody(), TestValues.TEST_BODY);
+        Assertions.assertEquals(ticketPage.getEmail(), TestValues.TEST_EMAIL);
     }
 }
