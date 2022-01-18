@@ -14,7 +14,7 @@
 Написан тестовый фреймворк с использованием PageObject и аннотацией @FindBy
 Разобран пример заполнения тикета в техподдержку
 
-# UI Selenide автотесты находятся в пакете AppleInsider
+# UI Selenide автотесты находятся в пакете AppleInsider и Hh
 Разобран пример как работать с элементами в Selenide по паттерну PageObject
 
 # UI Selenide ElementsCollection в пакете wiki
