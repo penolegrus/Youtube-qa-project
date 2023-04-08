@@ -1,5 +1,5 @@
 # Youtube-qa-project
-Проект по автотестам для моего ютуб канала.
+Проект по автотестам для моего ютуб канала. https://www.youtube.com/@threadqa
 В этом репозитаории содержатся UI Selenide + API Rest Assured автотесты
 
 # API автотесты находятся в пакете api
